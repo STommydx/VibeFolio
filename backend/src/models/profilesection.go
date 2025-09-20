@@ -17,7 +17,7 @@ type ProfileSection struct {
 func (ProfileSection) Fields() []ent.Field {
 	return []ent.Field{
 		field.String("type").
-			Values("summary", "education", "experience", "skills", "projects", "certifications", "publications", "volunteer", "interests").
+			NotEmpty().
 			Comment("Type of section (summary, education, experience, skills, etc.)"),
 		field.String("title").
 			NotEmpty().

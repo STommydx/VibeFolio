@@ -3,7 +3,6 @@ package nats
 import (
 	"fmt"
 	"os"
-	"path/filepath"
 
 	"github.com/nats-io/nats-server/v2/server"
 	"github.com/nats-io/nats.go"
