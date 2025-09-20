@@ -124,16 +124,16 @@
 - [ ] T062 Create server-side rendered handlers for UI pages in backend/src/ui/handlers/
 
 ## Phase 3.4: Integration
-- [ ] T063 Connect ent ORM to SQLite database in backend/src/database/
-- [ ] T064 Integrate NATS JetStream for work queue in backend/src/nats/queue.go
-- [ ] T065 Integrate NATS Object Storage for file storage in backend/src/nats/storage.go
-- [ ] T066 Implement OAuth 2.0 middleware for authentication in backend/src/middleware/auth.go
-- [ ] T067 Implement authorization middleware for access control in backend/src/middleware/access.go
-- [ ] T068 Set up LaTeX PDF generation service in backend/src/pdf/
-- [ ] T069 Implement structured logging with zap in backend/src/telemetry/logging.go
-- [ ] T070 Implement OpenTelemetry metrics and tracing in backend/src/telemetry/metrics.go
-- [ ] T071 Add input validation for all API endpoints in backend/src/validation/
-- [ ] T072 Implement error handling and standardized error responses in backend/src/errors/
+- [x] T063 Connect ent ORM to SQLite database in backend/src/database/
+- [x] T064 Integrate NATS JetStream for work queue in backend/src/nats/queue.go
+- [x] T065 Integrate NATS Object Storage for file storage in backend/src/nats/storage.go
+- [x] T066 Implement OAuth 2.0 middleware for authentication in backend/src/middleware/auth.go
+- [x] T067 Implement authorization middleware for access control in backend/src/middleware/access.go
+- [x] T068 Set up LaTeX PDF generation service in backend/src/pdf/
+- [x] T069 Implement structured logging with zap in backend/src/telemetry/logging.go
+- [x] T070 Implement OpenTelemetry metrics and tracing in backend/src/telemetry/metrics.go
+- [x] T071 Add input validation for all API endpoints in backend/src/validation/
+- [x] T072 Implement error handling and standardized error responses in backend/src/errors/
 
 ## Phase 3.5: Polish
 - [ ] T073 [P] Unit tests for ProfileService in backend/tests/unit/profile_service_test.go
