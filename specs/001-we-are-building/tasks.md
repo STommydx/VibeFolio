@@ -90,13 +90,13 @@
 - [x] T036 Create database migration scripts for all entities in backend/migrations/
 
 ### Service Layer [P]
-- [ ] T037 [P] Implement ProfileService for profile CRUD operations in backend/src/services/profile_service.go
-- [ ] T038 [P] Implement SectionService for profile section management in backend/src/services/section_service.go
-- [ ] T039 [P] Implement MediaService for file upload and management in backend/src/services/media_service.go
-- [ ] T040 [P] Implement LinkService for external link management in backend/src/services/link_service.go
-- [ ] T041 [P] Implement ShareService for profile sharing functionality in backend/src/services/share_service.go
-- [ ] T042 [P] Implement ResumeService for PDF generation in backend/src/services/resume_service.go
-- [ ] T043 [P] Implement AuthService for OAuth 2.0 integration in backend/src/services/auth_service.go
+- [x] T037 [P] Implement ProfileService for profile CRUD operations in backend/src/services/profile_service.go
+- [x] T038 [P] Implement SectionService for profile section management in backend/src/services/section_service.go
+- [x] T039 [P] Implement MediaService for file upload and management in backend/src/services/media_service.go
+- [x] T040 [P] Implement LinkService for external link management in backend/src/services/link_service.go
+- [x] T041 [P] Implement ShareService for profile sharing functionality in backend/src/services/share_service.go
+- [x] T042 [P] Implement ResumeService for PDF generation in backend/src/services/resume_service.go
+- [x] T043 [P] Implement AuthService for OAuth 2.0 integration in backend/src/services/auth_service.go
 
 ### API Layer
 - [ ] T044 Implement OAuth login handler in backend/src/api/auth_handler.go
