@@ -6,7 +6,6 @@ import (
 	"path/filepath"
 
 	"github.com/hashicorp/hcl/v2/hclsimple"
-	"golang.org/x/sys/unix"
 )
 
 // Config represents the application configuration
@@ -119,20 +118,18 @@ nats {
 }
 
 oauth {
-  providers = [
-    {
-      name = "google"
-      client_id = "your-google-client-id"
-      client_secret = "your-google-client-secret"
-      redirect_url = "http://localhost:8080/auth/callback"
-    },
-    {
-      name = "github"
-      client_id = "your-github-client-id"
-      client_secret = "your-github-client-secret"
-      redirect_url = "http://localhost:8080/auth/callback"
-    }
-  ]
+  providers {
+    name = "google"
+    client_id = "your-google-client-id"
+    client_secret = "your-google-client-secret"
+    redirect_url = "http://localhost:8080/auth/callback"
+  }
+  providers {
+    name = "github"
+    client_id = "your-github-client-id"
+    client_secret = "your-github-client-secret"
+    redirect_url = "http://localhost:8080/auth/callback"
+  }
 }
 
 logging {
