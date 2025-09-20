@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
+	"github.com/stommydx/VibeFolio/backend/src/cli"
 	"github.com/stommydx/VibeFolio/backend/src/config"
 	"go.uber.org/zap"
 )
@@ -62,8 +63,16 @@ func main() {
 		},
 	}
 
+	// Initialize logger for CLI commands
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
+
+	// Add CLI commands
 	rootCmd.AddCommand(serveCmd)
 	rootCmd.AddCommand(configCmd)
+	rootCmd.AddCommand(cli.NewProfileCreateCmd(logger))
+	rootCmd.AddCommand(cli.NewSectionManageCmd(logger))
+	rootCmd.AddCommand(cli.NewResumeGenerateCmd(logger))
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

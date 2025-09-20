@@ -2,13 +2,9 @@ package cli
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/spf13/cobra"
 	"go.uber.org/zap"
-
-	"github.com/stommydx/VibeFolio/backend/src/config"
-	"github.com/stommydx/VibeFolio/backend/src/telemetry"
 )
 
 // NewProfileCreateCmd creates a new profile creation CLI command
