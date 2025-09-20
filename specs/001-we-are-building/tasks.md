@@ -99,18 +99,18 @@
 - [x] T043 [P] Implement AuthService for OAuth 2.0 integration in backend/src/services/auth_service.go
 
 ### API Layer
-- [ ] T044 Implement OAuth login handler in backend/src/api/auth_handler.go
-- [ ] T045 Implement OAuth callback handler in backend/src/api/auth_callback_handler.go
-- [ ] T046 Implement GET /api/profiles endpoint in backend/src/api/profile_handler.go
-- [ ] T047 Implement POST /api/profiles endpoint in backend/src/api/profile_handler.go
-- [ ] T048 Implement GET /api/profiles/{profileId} endpoint in backend/src/api/profile_handler.go
-- [ ] T049 Implement PUT /api/profiles/{profileId} endpoint in backend/src/api/profile_handler.go
-- [ ] T050 Implement DELETE /api/profiles/{profileId} endpoint in backend/src/api/profile_handler.go
-- [ ] T051 Implement GET /api/profiles/{profileId}/sections endpoint in backend/src/api/section_handler.go
-- [ ] T052 Implement POST /api/profiles/{profileId}/sections endpoint in backend/src/api/section_handler.go
-- [ ] T053 Implement PUT /api/profiles/{profileId}/sections/{sectionId} endpoint in backend/src/api/section_handler.go
-- [ ] T054 Implement DELETE /api/profiles/{profileId}/sections/{sectionId} endpoint in backend/src/api/section_handler.go
-- [ ] T055 Implement POST /api/profiles/{profileId}/resume endpoint in backend/src/api/resume_handler.go
+- [x] T044 Implement OAuth login handler in backend/src/api/auth_handler.go
+- [x] T045 Implement OAuth callback handler in backend/src/api/auth_callback_handler.go
+- [x] T046 Implement GET /api/profiles endpoint in backend/src/api/profile_handler.go
+- [x] T047 Implement POST /api/profiles endpoint in backend/src/api/profile_handler.go
+- [x] T048 Implement GET /api/profiles/{profileId} endpoint in backend/src/api/profile_handler.go
+- [x] T049 Implement PUT /api/profiles/{profileId} endpoint in backend/src/api/profile_handler.go
+- [x] T050 Implement DELETE /api/profiles/{profileId} endpoint in backend/src/api/profile_handler.go
+- [x] T051 Implement GET /api/profiles/{profileId}/sections endpoint in backend/src/api/section_handler.go
+- [x] T052 Implement POST /api/profiles/{profileId}/sections endpoint in backend/src/api/section_handler.go
+- [x] T053 Implement PUT /api/profiles/{profileId}/sections/{sectionId} endpoint in backend/src/api/section_handler.go
+- [x] T054 Implement DELETE /api/profiles/{profileId}/sections/{sectionId} endpoint in backend/src/api/section_handler.go
+- [x] T055 Implement POST /api/profiles/{profileId}/resume endpoint in backend/src/api/resume_handler.go
 
 ### CLI Layer [P]
 - [ ] T056 [P] Implement profile creation CLI command in backend/src/cli/profile_create.go
