@@ -35,8 +35,10 @@ func main() {
 				zap.String("host", cfg.Server.Host),
 				zap.Int("port", cfg.Server.Port))
 
-			// Server implementation will go here
+			// In a real implementation, this would start the actual server
+			// For now, we'll just print a message
 			fmt.Printf("Server would start on %s:%d\n", cfg.Server.Host, cfg.Server.Port)
+			fmt.Println("Run 'go run src/server/main.go' to start the actual server")
 		},
 	}
 
