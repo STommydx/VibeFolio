@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"net/http"
 	"os"
@@ -24,7 +23,7 @@ func main() {
 	}
 
 	// Initialize logger and tracer
-	logger, tracer, err := telemetry.Setup(telemetry.Config{
+	logger, _, err := telemetry.Setup(telemetry.Config{
 		LogLevel:  cfg.Logging.Level,
 		LogFormat: cfg.Logging.Format,
 	})
@@ -34,9 +33,6 @@ func main() {
 	}
 	defer logger.Sync()
 
-	// Create a context with the logger
-	ctx := telemetry.WithLogger(context.Background(), logger)
-
 	// Log startup
 	logger.Info("Starting VibeFolio server...",
 		zap.String("host", cfg.Server.Host),
@@ -44,7 +40,7 @@ func main() {
 
 	// Create the huma API
 	mux := http.NewServeMux()
-	api := humago.New(mux, huma.DefaultConfig("VibeFolio API", "1.0.0"))
+	humaAPI := humago.New(mux, huma.DefaultConfig("VibeFolio API", "1.0.0"))
 
 	// Create handlers
 	authHandler := api.NewAuthHandler(logger.Logger)
@@ -53,10 +49,10 @@ func main() {
 	resumeHandler := api.NewResumeHandler(logger.Logger)
 
 	// Register routes
-	authHandler.RegisterRoutes(api)
-	profileHandler.RegisterRoutes(api)
-	sectionHandler.RegisterRoutes(api)
-	resumeHandler.RegisterRoutes(api)
+	authHandler.RegisterRoutes(humaAPI)
+	profileHandler.RegisterRoutes(humaAPI)
+	sectionHandler.RegisterRoutes(humaAPI)
+	resumeHandler.RegisterRoutes(humaAPI)
 
 	// Start the server
 	addr := fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port)
