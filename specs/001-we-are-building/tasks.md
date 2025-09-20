@@ -44,50 +44,50 @@
 - [x] T001 Create project structure per implementation plan in backend/
 - [x] T002 Initialize Go project with huma, ent, templ, NATS dependencies in backend/go.mod
 - [x] T003 [P] Configure linting and formatting tools with golangci-lint in backend/.golangci.yml
-- [ ] T004 Set up uber/fx dependency injection framework in backend/src/di/
-- [ ] T005 Configure HCL-based configuration management in backend/src/config/
-- [ ] T006 Set up cobra CLI framework in backend/src/cli/
-- [ ] T007 Initialize embedded NATS JetStream server in backend/src/nats/
-- [ ] T008 Set up OpenTelemetry and zap logging in backend/src/telemetry/
+- [x] T004 Set up uber/fx dependency injection framework in backend/src/di/
+- [x] T005 Configure HCL-based configuration management in backend/src/config/
+- [x] T006 Set up cobra CLI framework in backend/src/cli/
+- [x] T007 Initialize embedded NATS JetStream server in backend/src/nats/
+- [x] T008 Set up OpenTelemetry and zap logging in backend/src/telemetry/
 
 ## Phase 3.2: Tests First (TDD) ⚠️ MUST COMPLETE BEFORE 3.3
 **CRITICAL: These tests MUST be written and MUST FAIL before ANY implementation**
 
 ### Contract Tests [P]
-- [ ] T009 [P] Contract test for /auth/login endpoint in backend/tests/contract/test_auth_login.go
-- [ ] T010 [P] Contract test for /auth/callback endpoint in backend/tests/contract/test_auth_callback.go
-- [ ] T011 [P] Contract test for GET /api/profiles endpoint in backend/tests/contract/test_get_profiles.go
-- [ ] T012 [P] Contract test for POST /api/profiles endpoint in backend/tests/contract/test_create_profile.go
-- [ ] T013 [P] Contract test for GET /api/profiles/{profileId} endpoint in backend/tests/contract/test_get_profile.go
-- [ ] T014 [P] Contract test for PUT /api/profiles/{profileId} endpoint in backend/tests/contract/test_update_profile.go
-- [ ] T015 [P] Contract test for DELETE /api/profiles/{profileId} endpoint in backend/tests/contract/test_delete_profile.go
-- [ ] T016 [P] Contract test for GET /api/profiles/{profileId}/sections endpoint in backend/tests/contract/test_get_sections.go
-- [ ] T017 [P] Contract test for POST /api/profiles/{profileId}/sections endpoint in backend/tests/contract/test_create_section.go
-- [ ] T018 [P] Contract test for PUT /api/profiles/{profileId}/sections/{sectionId} endpoint in backend/tests/contract/test_update_section.go
-- [ ] T019 [P] Contract test for DELETE /api/profiles/{profileId}/sections/{sectionId} endpoint in backend/tests/contract/test_delete_section.go
-- [ ] T020 [P] Contract test for POST /api/profiles/{profileId}/resume endpoint in backend/tests/contract/test_generate_resume.go
+- [x] T009 [P] Contract test for /auth/login endpoint in backend/tests/contract/test_auth_login.go
+- [x] T010 [P] Contract test for /auth/callback endpoint in backend/tests/contract/test_auth_callback.go
+- [x] T011 [P] Contract test for GET /api/profiles endpoint in backend/tests/contract/test_get_profiles.go
+- [x] T012 [P] Contract test for POST /api/profiles endpoint in backend/tests/contract/test_create_profile.go
+- [x] T013 [P] Contract test for GET /api/profiles/{profileId} endpoint in backend/tests/contract/test_get_profile.go
+- [x] T014 [P] Contract test for PUT /api/profiles/{profileId} endpoint in backend/tests/contract/test_update_profile.go
+- [x] T015 [P] Contract test for DELETE /api/profiles/{profileId} endpoint in backend/tests/contract/test_delete_profile.go
+- [x] T016 [P] Contract test for GET /api/profiles/{profileId}/sections endpoint in backend/tests/contract/test_get_sections.go
+- [x] T017 [P] Contract test for POST /api/profiles/{profileId}/sections endpoint in backend/tests/contract/test_create_section.go
+- [x] T018 [P] Contract test for PUT /api/profiles/{profileId}/sections/{sectionId} endpoint in backend/tests/contract/test_update_section.go
+- [x] T019 [P] Contract test for DELETE /api/profiles/{profileId}/sections/{sectionId} endpoint in backend/tests/contract/test_delete_section.go
+- [x] T020 [P] Contract test for POST /api/profiles/{profileId}/resume endpoint in backend/tests/contract/test_generate_resume.go
 
 ### Integration Tests [P]
-- [ ] T021 [P] Integration test for OAuth 2.0 flow with Google provider in backend/tests/integration/test_oauth_google.go
-- [ ] T022 [P] Integration test for OAuth 2.0 flow with GitHub provider in backend/tests/integration/test_oauth_github.go
-- [ ] T023 [P] Integration test for profile creation and management in backend/tests/integration/test_profile_management.go
-- [ ] T024 [P] Integration test for profile section management in backend/tests/integration/test_section_management.go
-- [ ] T025 [P] Integration test for media upload and storage in backend/tests/integration/test_media_upload.go
-- [ ] T026 [P] Integration test for external link management in backend/tests/integration/test_link_management.go
-- [ ] T027 [P] Integration test for profile sharing functionality in backend/tests/integration/test_profile_sharing.go
-- [ ] T028 [P] Integration test for resume PDF generation in backend/tests/integration/test_resume_generation.go
+- [x] T021 [P] Integration test for OAuth 2.0 flow with Google provider in backend/tests/integration/test_oauth_google.go
+- [x] T022 [P] Integration test for OAuth 2.0 flow with GitHub provider in backend/tests/integration/test_oauth_github.go
+- [x] T023 [P] Integration test for profile creation and management in backend/tests/integration/test_profile_management.go
+- [x] T024 [P] Integration test for profile section management in backend/tests/integration/test_section_management.go
+- [x] T025 [P] Integration test for media upload and storage in backend/tests/integration/test_media_upload.go
+- [x] T026 [P] Integration test for external link management in backend/tests/integration/test_link_management.go
+- [x] T027 [P] Integration test for profile sharing functionality in backend/tests/integration/test_profile_sharing.go
+- [x] T028 [P] Integration test for resume PDF generation in backend/tests/integration/test_resume_generation.go
 
 ## Phase 3.3: Core Implementation (ONLY after tests are failing)
 
 ### Data Layer [P]
-- [ ] T029 [P] Generate UserProfile entity with ent in backend/src/models/user_profile.go
-- [ ] T030 [P] Generate ProfileSection entity with ent in backend/src/models/profile_section.go
-- [ ] T031 [P] Generate MediaAsset entity with ent in backend/src/models/media_asset.go
-- [ ] T032 [P] Generate ExternalLink entity with ent in backend/src/models/external_link.go
-- [ ] T033 [P] Generate ShareConfiguration entity with ent in backend/src/models/share_configuration.go
-- [ ] T034 [P] Generate ResumeTemplate entity with ent in backend/src/models/resume_template.go
-- [ ] T035 [P] Generate GeneratedResume entity with ent in backend/src/models/generated_resume.go
-- [ ] T036 Create database migration scripts for all entities in backend/migrations/
+- [x] T029 [P] Generate UserProfile entity with ent in backend/src/models/user_profile.go
+- [x] T030 [P] Generate ProfileSection entity with ent in backend/src/models/profile_section.go
+- [x] T031 [P] Generate MediaAsset entity with ent in backend/src/models/media_asset.go
+- [x] T032 [P] Generate ExternalLink entity with ent in backend/src/models/external_link.go
+- [x] T033 [P] Generate ShareConfiguration entity with ent in backend/src/models/share_configuration.go
+- [x] T034 [P] Generate ResumeTemplate entity with ent in backend/src/models/resume_template.go
+- [x] T035 [P] Generate GeneratedResume entity with ent in backend/src/models/generated_resume.go
+- [x] T036 Create database migration scripts for all entities in backend/migrations/
 
 ### Service Layer [P]
 - [ ] T037 [P] Implement ProfileService for profile CRUD operations in backend/src/services/profile_service.go
