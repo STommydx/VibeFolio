@@ -136,19 +136,19 @@
 - [x] T072 Implement error handling and standardized error responses in backend/src/errors/
 
 ## Phase 3.5: Polish
-- [ ] T073 [P] Unit tests for ProfileService in backend/tests/unit/profile_service_test.go
-- [ ] T074 [P] Unit tests for SectionService in backend/tests/unit/section_service_test.go
-- [ ] T075 [P] Unit tests for MediaService in backend/tests/unit/media_service_test.go
-- [ ] T076 [P] Unit tests for AuthService in backend/tests/unit/auth_service_test.go
-- [ ] T077 Performance tests for profile operations (<200ms) in backend/tests/performance/profile_test.go
-- [ ] T078 Performance tests for resume generation (<5s) in backend/tests/performance/resume_test.go
-- [ ] T079 Security audit of OAuth 2.0 implementation in backend/docs/security.md
-- [ ] T080 Security audit of access controls in backend/docs/security.md
-- [ ] T081 Observability validation (logs, metrics, traces) in backend/tests/observability/
-- [ ] T082 [P] Update API documentation from OpenAPI spec in backend/docs/api.md
-- [ ] T083 [P] Update user documentation and quickstart guide in backend/docs/user-guide.md
-- [ ] T084 Remove code duplication and refactor as needed
-- [ ] T085 Run manual testing based on quickstart guide in backend/tests/manual/
+- [x] T073 [P] Unit tests for ProfileService in backend/tests/unit/profile_service_test.go
+- [x] T074 [P] Unit tests for SectionService in backend/tests/unit/section_service_test.go
+- [x] T075 [P] Unit tests for MediaService in backend/tests/unit/media_service_test.go
+- [x] T076 [P] Unit tests for AuthService in backend/tests/unit/auth_service_test.go
+- [x] T077 Performance tests for profile operations (<200ms) in backend/tests/performance/profile_test.go
+- [x] T078 Performance tests for resume generation (<5s) in backend/tests/performance/resume_test.go
+- [x] T079 Security audit of OAuth 2.0 implementation in backend/docs/security.md
+- [x] T080 Security audit of access controls in backend/docs/security.md
+- [x] T081 Observability validation (logs, metrics, traces) in backend/tests/observability/
+- [x] T082 [P] Update API documentation from OpenAPI spec in backend/docs/api.md
+- [x] T083 [P] Update user documentation and quickstart guide in backend/docs/user-guide.md
+- [x] T084 Remove code duplication and refactor as needed
+- [x] T085 Run manual testing based on quickstart guide in backend/tests/manual/
 
 ## Dependencies
 - Tests (T009-T028) before implementation (T029-T072)
