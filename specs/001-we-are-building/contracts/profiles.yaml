@@ -1,0 +1,401 @@
+openapi: 3.0.3
+info:
+  title: Portfolio Management API
+  description: API for managing professional portfolios and generating resumes
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+
+paths:
+  /api/profiles:
+    get:
+      summary: List user profiles
+      description: Retrieve a list of profiles for the authenticated user
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserProfile'
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create a new profile
+      description: Create a new user profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProfileRequest'
+      responses:
+        '201':
+          description: Profile created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+
+  /api/profiles/{profileId}:
+    get:
+      summary: Get profile by ID
+      description: Retrieve a specific profile by its ID
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Profile not found
+    put:
+      summary: Update profile
+      description: Update an existing profile
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProfileRequest'
+      responses:
+        '200':
+          description: Profile updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Profile not found
+    delete:
+      summary: Delete profile
+      description: Delete a profile
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Profile deleted
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Profile not found
+
+  /api/profiles/{profileId}/sections:
+    get:
+      summary: List profile sections
+      description: Retrieve all sections for a specific profile
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProfileSection'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Profile not found
+    post:
+      summary: Create profile section
+      description: Create a new section for a profile
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSectionRequest'
+      responses:
+        '201':
+          description: Section created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileSection'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Profile not found
+
+  /api/profiles/{profileId}/sections/{sectionId}:
+    put:
+      summary: Update profile section
+      description: Update an existing profile section
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: sectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSectionRequest'
+      responses:
+        '200':
+          description: Section updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileSection'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Section not found
+    delete:
+      summary: Delete profile section
+      description: Delete a profile section
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: sectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Section deleted
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Section not found
+
+  /api/profiles/{profileId}/resume:
+    post:
+      summary: Generate resume PDF
+      description: Generate a PDF resume from the profile data
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateResumeRequest'
+      responses:
+        '202':
+          description: Resume generation started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResumeGenerationResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Profile not found
+
+components:
+  schemas:
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        is_public:
+          type: boolean
+        view_count:
+          type: integer
+      required:
+        - id
+        - user_id
+        - created_at
+        - updated_at
+        - is_public
+        - view_count
+
+    CreateProfileRequest:
+      type: object
+      properties:
+        is_public:
+          type: boolean
+      required:
+        - is_public
+
+    UpdateProfileRequest:
+      type: object
+      properties:
+        is_public:
+          type: boolean
+
+    ProfileSection:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        profile_id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum: [summary, education, experience, skills, projects, certifications, publications, volunteer, interests]
+        title:
+          type: string
+        content:
+          type: string
+        order:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - profile_id
+        - type
+        - title
+        - content
+        - order
+        - created_at
+        - updated_at
+
+    CreateSectionRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [summary, education, experience, skills, projects, certifications, publications, volunteer, interests]
+        title:
+          type: string
+        content:
+          type: string
+        order:
+          type: integer
+      required:
+        - type
+        - title
+        - content
+        - order
+
+    UpdateSectionRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [summary, education, experience, skills, projects, certifications, publications, volunteer, interests]
+        title:
+          type: string
+        content:
+          type: string
+        order:
+          type: integer
+
+    GenerateResumeRequest:
+      type: object
+      properties:
+        template_id:
+          type: string
+          format: uuid
+
+    ResumeGenerationResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [queued, processing, completed, failed]
+        message:
+          type: string
