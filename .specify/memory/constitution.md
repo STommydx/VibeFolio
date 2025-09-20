@@ -1,50 +1,65 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- 
+Sync Impact Report:
+- Version change: 1.0.0 → 1.1.0
+- Modified principles: 
+  * API First Development
+  * Test-Driven Development (Enhanced)
+  * Security by Default
+  * Observability Through Telemetry
+  * Layered Architecture
+- Added sections: None
+- Removed sections: None
+- Templates requiring updates: 
+  ✅ .specify/templates/plan-template.md (Constitution Check section)
+  ✅ .specify/templates/spec-template.md (Requirement alignment)
+  ✅ .specify/templates/tasks-template.md (Task categorization)
+- Follow-up TODOs: None
+-->
+
+# VibeFolio Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. API First Development
+Every feature MUST be accessible via a well-defined API endpoint before any UI implementation. All business operations that can be performed through a user interface MUST have a corresponding API endpoint that provides equivalent functionality. This ensures system interoperability, enables automated testing, and supports multiple client implementations.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Test-Driven Development
+Automated testing is mandatory for all code changes. Unit tests MUST be written before implementation where feasible. Integration tests MUST validate all API endpoints and critical user flows. Test coverage SHOULD exceed 80% for new features. Testing ensures code quality, prevents regressions, and enables safe refactoring.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Security by Default
+Security considerations MUST be integrated into every aspect of development. Access control mechanisms MUST be implemented at the API layer. All data transmission MUST be encrypted. Authentication and authorization MUST be validated for all operations. Security reviews MUST be conducted for features involving user data or system access.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Observability Through Telemetry
+All system components MUST emit structured logs and metrics. Telemetry data MUST include operation timing, error rates, and user activity patterns. Logging MUST follow a consistent structure to enable effective debugging and monitoring. Observability ensures system reliability and supports data-driven improvements.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Layered Architecture
+The system MUST follow a strict layered architecture pattern:
+- Repository Layer: Data persistence and retrieval operations
+- Service Layer: Business logic and domain operations
+- Controller Layer: Transport-related transformations and user interface coordination
+Each layer MUST be independently testable. Cross-layer dependencies MUST be minimized through well-defined interfaces.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Additional Constraints
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+All implementations MUST comply with industry-standard security practices. Third-party dependencies MUST be regularly updated and security-audited. Performance benchmarks MUST be established for critical operations and monitored continuously.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+Code reviews are mandatory for all changes. Feature branches MUST be used for all development work. Continuous integration MUST validate all tests pass before merging. Documentation MUST be updated alongside code changes. Release tags MUST follow semantic versioning.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This Constitution supersedes all other development practices and guidelines. Any amendments MUST be documented with a clear rationale and implementation plan. All team members MUST acknowledge and adhere to these principles. Compliance with these principles MUST be verified during code reviews.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+Versioning Policy:
+- MAJOR: Backward incompatible principle changes or removals
+- MINOR: New principle additions or materially expanded guidance
+- PATCH: Clarifications, wording improvements, non-semantic refinements
+
+Amendment Procedure:
+1. Propose changes with rationale and impact assessment
+2. Team review and consensus building
+3. Update Constitution and all dependent artifacts
+4. Communicate changes to all stakeholders
+
+**Version**: 1.1.0 | **Ratified**: 2025-09-20 | **Last Amended**: 2025-09-20

@@ -74,6 +74,15 @@ When creating this spec from a user prompt:
 - **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
 - **FR-005**: System MUST [behavior, e.g., "log all security events"]
 
+### Security Requirements
+- **SR-001**: System MUST implement access control for [sensitive operations]
+- **SR-002**: All data transmission MUST be encrypted
+- **SR-003**: Authentication MUST be validated for [protected operations]
+
+### Observability Requirements
+- **OR-001**: System MUST emit structured logs for [key operations]
+- **OR-002**: System MUST track metrics for [performance indicators]
+
 *Example of marking unclear requirements:*
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
 - **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
