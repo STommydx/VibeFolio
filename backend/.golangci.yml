@@ -1,0 +1,47 @@
+run:
+  timeout: 5m
+  tests: true
+
+linters:
+  enable:
+    - gofmt
+    - golint
+    - govet
+    - errcheck
+    - staticcheck
+    - unused
+    - gosimple
+    - structcheck
+    - varcheck
+    - ineffassign
+    - deadcode
+    - typecheck
+    - bodyclose
+    - goconst
+    - gocritic
+    - goimports
+    - goprintffuncname
+    - gosec
+    - lll
+    - misspell
+    - nakedret
+    - noctx
+    - nolintlint
+    - rowserrcheck
+    - unconvert
+    - unparam
+    - whitespace
+
+linters-settings:
+  lll:
+    line-length: 120
+  goconst:
+    min-len: 3
+    min-occurrences: 3
+  golint:
+    min-confidence: 0.8
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0

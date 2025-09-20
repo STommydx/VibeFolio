@@ -41,9 +41,9 @@
 - All paths assume web application structure per plan.md
 
 ## Phase 3.1: Setup
-- [ ] T001 Create project structure per implementation plan in backend/
-- [ ] T002 Initialize Go project with huma, ent, templ, NATS dependencies in backend/go.mod
-- [ ] T003 [P] Configure linting and formatting tools with golangci-lint in backend/.golangci.yml
+- [x] T001 Create project structure per implementation plan in backend/
+- [x] T002 Initialize Go project with huma, ent, templ, NATS dependencies in backend/go.mod
+- [x] T003 [P] Configure linting and formatting tools with golangci-lint in backend/.golangci.yml
 - [ ] T004 Set up uber/fx dependency injection framework in backend/src/di/
 - [ ] T005 Configure HCL-based configuration management in backend/src/config/
 - [ ] T006 Set up cobra CLI framework in backend/src/cli/
