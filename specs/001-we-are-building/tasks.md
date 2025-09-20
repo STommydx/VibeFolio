@@ -113,15 +113,15 @@
 - [x] T055 Implement POST /api/profiles/{profileId}/resume endpoint in backend/src/api/resume_handler.go
 
 ### CLI Layer [P]
-- [ ] T056 [P] Implement profile creation CLI command in backend/src/cli/profile_create.go
-- [ ] T057 [P] Implement profile section management CLI commands in backend/src/cli/section_manage.go
-- [ ] T058 [P] Implement resume generation CLI command in backend/src/cli/resume_generate.go
+- [x] T056 [P] Implement profile creation CLI command in backend/src/cli/profile_create.go
+- [x] T057 [P] Implement profile section management CLI commands in backend/src/cli/section_manage.go
+- [x] T058 [P] Implement resume generation CLI command in backend/src/cli/resume_generate.go
 
 ### UI Layer
-- [ ] T059 Create templ components for profile display in backend/src/ui/components/
-- [ ] T060 Create templ pages for profile management in backend/src/ui/pages/
-- [ ] T061 Implement HTMX interactions for dynamic UI updates in backend/src/ui/htmx/
-- [ ] T062 Create server-side rendered handlers for UI pages in backend/src/ui/handlers/
+- [x] T059 Create templ components for profile display in backend/src/ui/components/
+- [x] T060 Create templ pages for profile management in backend/src/ui/pages/
+- [x] T061 Implement HTMX interactions for dynamic UI updates in backend/src/ui/htmx/
+- [x] T062 Create server-side rendered handlers for UI pages in backend/src/ui/handlers/
 
 ## Phase 3.4: Integration
 - [x] T063 Connect ent ORM to SQLite database in backend/src/database/
