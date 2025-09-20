@@ -81,20 +81,22 @@ As a professional, I want to create and manage my portfolio profile so that I ca
 - **FR-007**: Users MUST be able to share their profile with other users through configurable public links
 - **FR-008**: System MUST allow users to configure privacy settings for their profile sharing
 - **FR-009**: System MUST persist all user profile data and sharing configurations
+- **FR-010**: System MUST integrate with external identity providers using standard OAuth 2.0 for authentication
 
 ### Security Requirements
 - **SR-001**: System MUST implement access control so that only the profile owner can edit their profile
 - **SR-002**: All data transmission MUST be encrypted
-- **SR-003**: Authentication MUST be validated for profile editing operations
+- **SR-003**: Authentication MUST be validated for profile editing operations using OAuth 2.0 tokens from external identity providers
 - **SR-004**: System MUST validate file uploads to prevent malicious file types
 - **SR-005**: System MUST implement rate limiting for PDF generation requests
+- **SR-006**: System MUST support integration with multiple external OAuth 2.0 identity providers (e.g., Google, GitHub, LinkedIn)
 
 ### Observability Requirements
 - **OR-001**: System MUST emit structured logs for profile creation, update, and PDF generation operations
 - **OR-002**: System MUST track metrics for profile views, PDF generations, and file uploads
 
 ### Key Entities
-- **UserProfile**: Represents a user's complete professional profile containing multiple sections
+- **UserProfile**: Represents a user's complete professional profile containing multiple sections. Linked to external identity provider via OAuth 2.0 subject identifier.
 - **ProfileSection**: Represents an individual section of a profile (summary, education, experience, etc.)
 - **MediaAsset**: Represents uploaded media files associated with a profile
 - **ExternalLink**: Represents links to external projects associated with a profile

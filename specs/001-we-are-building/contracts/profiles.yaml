@@ -8,10 +8,56 @@ servers:
     description: Local development server
 
 paths:
+  /auth/login:
+    get:
+      summary: Initiate OAuth 2.0 login flow
+      description: Redirect user to OAuth 2.0 provider for authentication
+      parameters:
+        - name: provider
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [google, github, linkedin]
+        - name: redirect_uri
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uri
+      responses:
+        '302':
+          description: Redirect to OAuth provider
+        '400':
+          description: Invalid provider
+
+  /auth/callback:
+    get:
+      summary: OAuth 2.0 callback endpoint
+      description: Handle OAuth 2.0 callback from provider
+      parameters:
+        - name: code
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: state
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirect to profile page
+        '400':
+          description: Invalid OAuth response
+
   /api/profiles:
     get:
       summary: List user profiles
       description: Retrieve a list of profiles for the authenticated user
+      security:
+        - OAuth2: [profile:read]
       responses:
         '200':
           description: Successful response
@@ -26,6 +72,8 @@ paths:
     post:
       summary: Create a new profile
       description: Create a new user profile
+      security:
+        - OAuth2: [profile:write]
       requestBody:
         required: true
         content:
@@ -48,6 +96,8 @@ paths:
     get:
       summary: Get profile by ID
       description: Retrieve a specific profile by its ID
+      security:
+        - OAuth2: [profile:read]
       parameters:
         - name: profileId
           in: path
@@ -71,6 +121,8 @@ paths:
     put:
       summary: Update profile
       description: Update an existing profile
+      security:
+        - OAuth2: [profile:write]
       parameters:
         - name: profileId
           in: path
@@ -102,6 +154,8 @@ paths:
     delete:
       summary: Delete profile
       description: Delete a profile
+      security:
+        - OAuth2: [profile:write]
       parameters:
         - name: profileId
           in: path
@@ -123,6 +177,8 @@ paths:
     get:
       summary: List profile sections
       description: Retrieve all sections for a specific profile
+      security:
+        - OAuth2: [profile:read]
       parameters:
         - name: profileId
           in: path
@@ -148,6 +204,8 @@ paths:
     post:
       summary: Create profile section
       description: Create a new section for a profile
+      security:
+        - OAuth2: [profile:write]
       parameters:
         - name: profileId
           in: path
@@ -181,6 +239,8 @@ paths:
     put:
       summary: Update profile section
       description: Update an existing profile section
+      security:
+        - OAuth2: [profile:write]
       parameters:
         - name: profileId
           in: path
@@ -218,6 +278,8 @@ paths:
     delete:
       summary: Delete profile section
       description: Delete a profile section
+      security:
+        - OAuth2: [profile:write]
       parameters:
         - name: profileId
           in: path
@@ -245,6 +307,8 @@ paths:
     post:
       summary: Generate resume PDF
       description: Generate a PDF resume from the profile data
+      security:
+        - OAuth2: [profile:write]
       parameters:
         - name: profileId
           in: path
@@ -284,6 +348,10 @@ components:
           format: uuid
         user_id:
           type: string
+          description: OAuth 2.0 subject identifier from external identity provider
+        provider_name:
+          type: string
+          description: Name of the identity provider (e.g., "google", "github", "linkedin")
         created_at:
           type: string
           format: date-time
@@ -297,6 +365,7 @@ components:
       required:
         - id
         - user_id
+        - provider_name
         - created_at
         - updated_at
         - is_public
@@ -399,3 +468,14 @@ components:
           enum: [queued, processing, completed, failed]
         message:
           type: string
+
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: /auth/login
+          tokenUrl: /auth/token
+          scopes:
+            profile:read: Read profile information
+            profile:write: Write profile information

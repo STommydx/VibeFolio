@@ -3,11 +3,12 @@
 ## Entities
 
 ### UserProfile
-Represents a user's complete professional profile containing multiple sections.
+Represents a user's complete professional profile containing multiple sections. Linked to external identity provider via OAuth 2.0 subject identifier.
 
 **Fields**:
 - id (UUID) - Primary key
-- user_id (string) - Unique identifier for the user (authentication system reference)
+- user_id (string) - Unique OAuth 2.0 subject identifier from external identity provider
+- provider_name (string) - Name of the identity provider (e.g., "google", "github", "linkedin")
 - created_at (timestamp) - When the profile was created
 - updated_at (timestamp) - When the profile was last updated
 - is_public (boolean) - Whether the profile is publicly accessible

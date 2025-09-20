@@ -67,6 +67,15 @@ This document captures the research findings for the portfolio management system
 - kingpin (simpler but less features)
 - flag (standard library but limited)
 
+### 9. Authentication Approach
+**Decision**: Use standard OAuth 2.0 with external identity providers
+**Rationale**: Leveraging established identity providers (Google, GitHub, LinkedIn) reduces development complexity and security risks. Users benefit from familiar authentication flows and established trust relationships.
+**Implementation Approach**: 
+- Integrate with OAuth 2.0 providers using standard protocols
+- Store only OAuth subject identifiers in UserProfile entity
+- Use OAuth access tokens for API authorization
+- Support multiple identity providers simultaneously
+
 ## Implementation Approach
 Based on the research, we'll implement a layered architecture:
 1. Repository Layer: Using ent ORM for data persistence
