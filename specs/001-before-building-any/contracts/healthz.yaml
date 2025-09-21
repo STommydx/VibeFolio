@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: VibeFolio Health Check API
+  description: Minimal HTTP API with health check endpoint
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+paths:
+  /healthz:
+    get:
+      summary: Health check endpoint
+      description: Returns the health status of the service
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+        '503':
+          description: Service is unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      required:
+        - status
+        - timestamp
+      properties:
+        status:
+          type: string
+          enum:
+            - healthy
+            - unhealthy
+          description: Current health status of the service
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO8601 timestamp when the health check was performed
+        version:
+          type: string
+          description: Version of the service
+        details:
+          type: object
+          description: Additional details about the health status
+          additionalProperties: true

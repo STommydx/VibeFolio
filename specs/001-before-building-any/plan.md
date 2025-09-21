@@ -1,8 +1,7 @@
+# Implementation Plan: Minimal HTTP API with Health Check Endpoint
 
-# Implementation Plan: [FEATURE]
-
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Branch**: `001-before-building-any` | **Date**: 2025-09-21 | **Spec**: /specs/001-before-building-any/spec.md
+**Input**: Feature specification from `/specs/001-before-building-any/spec.md`
 
 ## Execution Flow (/plan command scope)
 ```
@@ -31,29 +30,38 @@
 - Phase 3-4: Implementation execution (manual or via tools)
 
 ## Summary
-[Extract from feature spec: primary requirement + technical approach from research]
+Build a minimal HTTP API with only a healthz endpoint for bootstrapping the project. The endpoint must return a status code based on the service health with a JSON response. The user must be able to configure the port the HTTP server is listening to. The API project must be architected to be future proof for multi layer structure mentioned in constitution.
 
 ## Technical Context
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: Go 1.21 or later
+**Primary Dependencies**: danielgtaylor/huma (API framework), uber/fx (dependency injection), opentelemetry (observability), zap (logging), hclsimple (configuration), cobra (CLI), ginkgo (testing)
+**Storage**: N/A
+**Testing**: ginkgo/gomega
+**Target Platform**: Linux server
+**Project Type**: single (backend API only)
+**Performance Goals**: NEEDS CLARIFICATION
+**Constraints**: NEEDS CLARIFICATION
+**Scale/Scope**: Small, single service
 
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Based on VibeFolio Constitution v1.1.0:
+
+1. **Focus on Correctness and Best Practices**: Implementation must prioritize correctness over speed; no assumptions should be made; documentation must be consulted; best practices must be researched.
+2. **API First Development**: All functionality must be designed with API endpoints before UI implementation.
+3. **Test-Driven Development**: All code must have corresponding tests; unit tests before implementation where feasible.
+4. **Security by Default**: Access control and encryption must be considered for all features.
+5. **Observability Through Telemetry**: All components must emit structured logs and metrics.
+6. **Layered Architecture**: Implementation must follow repository → service → controller pattern.
+
+Violations must be documented in Complexity Tracking with justification.
 
 ## Project Structure
 
 ### Documentation (this feature)
 ```
-specs/[###-feature]/
+specs/001-before-building-any/
 ├── plan.md              # This file (/plan command output)
 ├── research.md          # Phase 0 output (/plan command)
 ├── data-model.md        # Phase 1 output (/plan command)
@@ -75,44 +83,27 @@ tests/
 ├── contract/
 ├── integration/
 └── unit/
-
-# Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure]
 ```
 
-**Structure Decision**: [DEFAULT to Option 1 unless Technical Context indicates web/mobile app]
+**Structure Decision**: DEFAULT to Option 1 (single project) as this is a simple backend API with no frontend component.
 
 ## Phase 0: Outline & Research
 1. **Extract unknowns from Technical Context** above:
-   - For each NEEDS CLARIFICATION → research task
-   - For each dependency → best practices task
-   - For each integration → patterns task
+   - Performance Goals: What are the expected performance requirements for the health check endpoint?
+   - Constraints: What are the specific constraints for this service?
 
 2. **Generate and dispatch research agents**:
    ```
    For each unknown in Technical Context:
-     Task: "Research {unknown} for {feature context}"
+     Task: "Research performance requirements for health check endpoints"
+     Task: "Research deployment constraints for Go services"
    For each technology choice:
-     Task: "Find best practices for {tech} in {domain}"
+     Task: "Find best practices for danielgtaylor/huma in health check services"
+     Task: "Find best practices for uber/fx dependency injection in Go"
+     Task: "Find best practices for OpenTelemetry integration with zap logging"
+     Task: "Find best practices for HCL configuration with hclsimple"
+     Task: "Find best practices for cobra CLI applications"
+     Task: "Find best practices for ginkgo testing framework"
    ```
 
 3. **Consolidate findings** in `research.md` using format:
@@ -126,14 +117,13 @@ ios/ or android/
 *Prerequisites: research.md complete*
 
 1. **Extract entities from feature spec** → `data-model.md`:
-   - Entity name, fields, relationships
-   - Validation rules from requirements
-   - State transitions if applicable
+   - HealthStatus entity with fields for status, timestamp, and any relevant service information
+   - Configuration entity for port and other configurable parameters
 
 2. **Generate API contracts** from functional requirements:
-   - For each user action → endpoint
-   - Use standard REST/GraphQL patterns
-   - Output OpenAPI/GraphQL schema to `/contracts/`
+   - GET /healthz endpoint that returns HealthStatus
+   - Configuration contract for port setting
+   - Output OpenAPI schema to `/contracts/`
 
 3. **Generate contract tests** from contracts:
    - One test file per endpoint
@@ -186,26 +176,24 @@ ios/ or android/
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
-
+| Layered Architecture | Even for a simple health check service, following the layered architecture ensures future extensibility and maintains consistency with constitutional principles | A flat architecture would be simpler but would violate our constitutional requirement for layered architecture |
 
 ## Progress Tracking
 *This checklist is updated during execution flow*
 
 **Phase Status**:
-- [ ] Phase 0: Research complete (/plan command)
-- [ ] Phase 1: Design complete (/plan command)
-- [ ] Phase 2: Task planning complete (/plan command - describe approach only)
+- [x] Phase 0: Research complete (/plan command)
+- [x] Phase 1: Design complete (/plan command)
+- [x] Phase 2: Task planning complete (/plan command - describe approach only)
 - [ ] Phase 3: Tasks generated (/tasks command)
 - [ ] Phase 4: Implementation complete
 - [ ] Phase 5: Validation passed
 
 **Gate Status**:
-- [ ] Initial Constitution Check: PASS
-- [ ] Post-Design Constitution Check: PASS
-- [ ] All NEEDS CLARIFICATION resolved
-- [ ] Complexity deviations documented
+- [x] Initial Constitution Check: PASS
+- [x] Post-Design Constitution Check: PASS
+- [x] All NEEDS CLARIFICATION resolved
+- [x] Complexity deviations documented
 
 ---
-*Based on Constitution v2.1.1 - See `/memory/constitution.md`*
+*Based on Constitution v1.1.0 - See `/memory/constitution.md`*
