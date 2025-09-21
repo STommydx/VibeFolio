@@ -1,0 +1,77 @@
+# golangci-lint configuration
+# See https://golangci-lint.run/usage/configuration/
+
+run:
+  # Timeout for analysis
+  timeout: 5m
+
+  # Include test files
+  tests: true
+
+linters:
+  # Enable specific linters
+  enable:
+    - errcheck      # Errcheck is a program for checking for unchecked errors in go programs.
+    - gosimple      # Linter for Go source code that specializes in simplifying code.
+    - govet         # Vet examines Go source code and reports suspicious constructs.
+    - ineffassign   # Detects when assignments to existing variables are not used.
+    - staticcheck   # Staticcheck is a go vet on steroids, applying a ton of static analysis checks.
+    - typecheck     # Like govet, but focused on type checking.
+    - unused        # Checks for unused constants, variables, functions and types.
+    - gci           # Gci controls Go package import order and makes it always deterministic.
+    - gocritic      # Provides diagnostics that check for bugs, performance issues, and other issues.
+    - gofmt         # Gofmt checks whether code was formatted according to the Go project's recommendations.
+    - goimports     # Goimports checks that imports are formatted correctly.
+    - misspell      # Finds commonly misspelled English words in comments.
+    - revive        # Fast, configurable, extensible, flexible, and beautiful linter for Go.
+
+  # Disable specific linters
+  disable:
+    # None currently
+
+issues:
+  # Exclude issues by regexp patterns.
+  exclude:
+    - "Error return value of .((os\\.)?std(out|err)\\..*|.*Close|.*Flush|os\\.Remove(All)?|.*print(f|ln)?|os\\.(Un)?Setenv). is not checked"
+
+  # Exclude specific linters from issues.
+  exclude-rules:
+    # Exclude some linters from running on test files.
+    - path: _test\.go
+      linters:
+        - gocyclo
+        - errcheck
+        - dupl
+        - gosec
+
+    # Exclude some linters from running on generated files.
+    - path: .*_gen\.go
+      linters:
+        - gocyclo
+        - errcheck
+        - dupl
+        - gosec
+
+linters-settings:
+  gci:
+    sections:
+      - standard # Standard section: captures all standard packages.
+      - default # Default section: contains all imports that could not be matched to another section type.
+      - prefix(github.com/STommydx/VibeFolio) # Custom section: groups all imports with the specified Prefix.
+
+  gofmt:
+    # Simplify code: gofmt with `-s` option.
+    simplify: true
+
+  govet:
+    # Enable all analyzers.
+    enable-all: true
+
+    # Disable analyzers by name.
+    disable:
+      - fieldalignment
+
+output:
+  # Format of output
+  formats:
+    - format: colored-line-number

@@ -1,6 +1,6 @@
 <!-- SYNC IMPACT REPORT
 Version change: 1.0.0 → 1.1.0
-Modified principles: 
+Modified principles:
 - I. Focus on Correctness and Best Practices (new principle added as first priority)
 - II. API-First Design (renumbered from I)
 - III. Test-Driven Development (renumbered from II)
