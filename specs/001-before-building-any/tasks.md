@@ -51,73 +51,73 @@
 ## Phase 3.2: Tests First (TDD) ⚠️ MUST COMPLETE BEFORE 3.3
 **CRITICAL: These tests MUST be written and MUST FAIL before ANY implementation**
 
-- [ ] T005 [P] Contract test GET /healthz endpoint in tests/contract/healthz_test.go
-- [ ] T006 [P] Integration test health check endpoint in tests/integration/healthz_test.go
-- [ ] T007 [P] Integration test configuration loading in tests/integration/config_test.go
-- [ ] T008 [P] Unit test health service logic in tests/unit/health_service_test.go
-- [ ] T009 [P] Unit test configuration parsing in tests/unit/config_test.go
+- [x] T005 [P] Contract test GET /healthz endpoint in tests/contract/healthz_test.go
+- [x] T006 [P] Integration test health check endpoint in tests/integration/healthz_test.go
+- [x] T007 [P] Integration test configuration loading in tests/integration/config_test.go
+- [x] T008 [P] Unit test health service logic in tests/unit/health_service_test.go
+- [x] T009 [P] Unit test configuration parsing in tests/unit/config_test.go
 
 ## Phase 3.3: Core Implementation (ONLY after tests are failing)
 
 ### Models
-- [ ] T010 [P] HealthStatus model in src/models/health_status.go
-- [ ] T011 [P] Configuration model in src/models/config.go
+- [x] T010 [P] HealthStatus model in src/models/health_status.go
+- [x] T011 [P] Configuration model in src/models/config.go
 
 ### Services
-- [ ] T012 Health service in src/services/health_service.go
-- [ ] T013 Configuration service in src/services/config_service.go
+- [x] T012 Health service in src/services/health_service.go
+- [x] T013 Configuration service in src/services/config_service.go
 
 ### CLI Commands
-- [ ] T014 [P] Root CLI command in src/cli/root.go
-- [ ] T015 [P] Serve command in src/cli/serve.go
+- [x] T014 [P] Root CLI command in src/cli/root.go
+- [x] T015 [P] Serve command in src/cli/serve.go
 
 ### API Endpoints
-- [ ] T016 GET /healthz endpoint in src/controllers/health_controller.go
+- [x] T016 GET /healthz endpoint in src/controllers/health_controller.go
 
 ### Core Components
-- [ ] T017 Input validation for configuration
-- [ ] T018 Error handling and response formatting
-- [ ] T019 Application startup and shutdown logic
+- [x] T017 Input validation for configuration
+- [x] T018 Error handling and response formatting
+- [x] T019 Application startup and shutdown logic
 
 ## Phase 3.4: Integration
 
 ### Dependency Injection
-- [ ] T020 Set up Fx dependency injection container in src/di/container.go
-- [ ] T021 Register services with Fx in src/di/modules.go
+- [x] T020 Set up Fx dependency injection container in src/di/container.go
+- [x] T021 Register services with Fx in src/di/modules.go
 
 ### Observability
-- [ ] T022 Integrate OpenTelemetry tracing in src/observability/tracer.go
-- [ ] T023 Set up Zap structured logging in src/observability/logger.go
-- [ ] T024 Request/response logging middleware
+- [x] T022 Integrate OpenTelemetry tracing in src/observability/tracer.go
+- [x] T023 Set up Zap structured logging in src/observability/logger.go
+- [x] T024 Request/response logging middleware
 
 ### Configuration
-- [ ] T025 HCL configuration parsing in src/config/hcl_parser.go
-- [ ] T026 Environment variable configuration in src/config/env_parser.go
-- [ ] T027 Command line flag configuration in src/config/flag_parser.go
+- [x] T025 HCL configuration parsing in src/config/hcl_parser.go
+- [x] T026 Environment variable configuration in src/config/env_parser.go
+- [x] T027 Command line flag configuration in src/config/flag_parser.go
 
 ### HTTP Server
-- [ ] T028 HTTP server setup with Huma in src/server/server.go
-- [ ] T029 Server lifecycle management (start/stop)
+- [x] T028 HTTP server setup with Huma in src/server/server.go
+- [x] T029 Server lifecycle management (start/stop)
 
 ## Phase 3.5: Polish
 
 ### Testing
-- [ ] T030 [P] Unit tests for error handling in tests/unit/error_test.go
-- [ ] T031 [P] Unit tests for logging in tests/unit/logging_test.go
-- [ ] T032 Performance tests for health endpoint (<100ms)
-- [ ] T033 Load testing for concurrent health checks
+- [x] T030 [P] Unit tests for error handling in tests/unit/error_test.go
+- [x] T031 [P] Unit tests for logging in tests/unit/logging_test.go
+- [x] T032 Performance tests for health endpoint (<100ms)
+- [x] T033 Load testing for concurrent health checks
 
 ### Documentation
-- [ ] T034 [P] Update README.md with project documentation
-- [ ] T035 [P] Update docs/api.md with API documentation
-- [ ] T036 [P] Create example configuration files
-- [ ] T037 [P] Update DEVELOPMENT.md with development guide
+- [x] T034 [P] Update README.md with project documentation
+- [x] T035 [P] Update docs/api.md with API documentation
+- [x] T036 [P] Create example configuration files
+- [x] T037 [P] Update DEVELOPMENT.md with development guide
 
 ### Quality
-- [ ] T038 Remove code duplication
-- [ ] T039 Run manual-testing.md scenarios
-- [ ] T040 Verify all acceptance criteria from spec.md
-- [ ] T041 Security audit for HTTP server configuration
+- [x] T038 Remove code duplication
+- [x] T039 Run manual-testing.md scenarios
+- [x] T040 Verify all acceptance criteria from spec.md
+- [x] T041 Security audit for HTTP server configuration
 
 ## Dependencies
 
