@@ -47,15 +47,7 @@
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-Based on VibeFolio Constitution v1.1.0:
-
-1. **API First Development**: All features must be designed with API endpoints before UI implementation
-2. **Test-Driven Development**: All code must have corresponding tests; unit tests before implementation where feasible
-3. **Security by Default**: Access control and encryption must be considered for all features
-4. **Observability Through Telemetry**: All components must emit structured logs and metrics
-5. **Layered Architecture**: Implementation must follow repository → service → controller pattern
-
-Violations must be documented in Complexity Tracking with justification.
+[Gates determined based on constitution file]
 
 ## Project Structure
 
@@ -216,4 +208,4 @@ ios/ or android/
 - [ ] Complexity deviations documented
 
 ---
-*Based on Constitution v1.1.0 - See `/memory/constitution.md`*
+*Based on Constitution v2.1.1 - See `/memory/constitution.md`*

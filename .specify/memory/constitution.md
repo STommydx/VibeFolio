@@ -1,65 +1,93 @@
-<!-- 
-Sync Impact Report:
-- Version change: 1.0.0 → 1.1.0
-- Modified principles: 
-  * API First Development
-  * Test-Driven Development (Enhanced)
-  * Security by Default
-  * Observability Through Telemetry
-  * Layered Architecture
-- Added sections: None
-- Removed sections: None
-- Templates requiring updates: 
-  ✅ .specify/templates/plan-template.md (Constitution Check section)
-  ✅ .specify/templates/spec-template.md (Requirement alignment)
-  ✅ .specify/templates/tasks-template.md (Task categorization)
-- Follow-up TODOs: None
+<!-- SYNC IMPACT REPORT
+Version change: 1.0.0 → 1.1.0
+Modified principles: 
+- I. Focus on Correctness and Best Practices (new principle added as first priority)
+- II. API-First Design (renumbered from I)
+- III. Test-Driven Development (renumbered from II)
+- IV. Security by Default (renumbered from III)
+- V. Observability through Telemetry (renumbered from IV)
+- VI. Layered Architecture (renumbered from V)
+Added sections: None
+Removed sections: None
+Templates requiring updates: None
+Follow-up TODOs: None
 -->
 
 # VibeFolio Constitution
 
 ## Core Principles
 
-### I. API First Development
-Every feature MUST be accessible via a well-defined API endpoint before any UI implementation. All business operations that can be performed through a user interface MUST have a corresponding API endpoint that provides equivalent functionality. This ensures system interoperability, enables automated testing, and supports multiple client implementations.
+### I. Focus on Correctness and Best Practices
+All development MUST prioritize correctness over speed. NO ASSUMPTIONS should be made during implementation. Documentation MUST be consulted, and best practices MUST be researched with references to existing projects when applicable. Each task MUST have a concrete and verifiable goal to ensure correctness before moving on to the next task.
 
-### II. Test-Driven Development
-Automated testing is mandatory for all code changes. Unit tests MUST be written before implementation where feasible. Integration tests MUST validate all API endpoints and critical user flows. Test coverage SHOULD exceed 80% for new features. Testing ensures code quality, prevents regressions, and enables safe refactoring.
+### II. API-First Design
+All functionality MUST be accessible through well-defined APIs before any UI implementation. UI components MUST use the same APIs that external consumers would use. This ensures consistent behavior and enables multiple clients to leverage the same functionality.
 
-### III. Security by Default
-Security considerations MUST be integrated into every aspect of development. Access control mechanisms MUST be implemented at the API layer. All data transmission MUST be encrypted. Authentication and authorization MUST be validated for all operations. Security reviews MUST be conducted for features involving user data or system access.
+### III. Test-Driven Development
+All code MUST be developed using Test-Driven Development practices. Tests MUST be written before implementation, and all code MUST have associated tests that validate its behavior. Integration tests MUST cover all API endpoints and critical user flows.
 
-### IV. Observability Through Telemetry
-All system components MUST emit structured logs and metrics. Telemetry data MUST include operation timing, error rates, and user activity patterns. Logging MUST follow a consistent structure to enable effective debugging and monitoring. Observability ensures system reliability and supports data-driven improvements.
+### IV. Security by Default
+Security MUST be considered at every stage of development. Access control mechanisms MUST be implemented for all resources. Authentication and authorization MUST be enforced at the API level. All data transmission MUST be encrypted, and sensitive data MUST be properly protected.
 
-### V. Layered Architecture
-The system MUST follow a strict layered architecture pattern:
-- Repository Layer: Data persistence and retrieval operations
+### V. Observability through Telemetry
+Structured logging and telemetry MUST be integrated into all components. All significant operations MUST generate appropriate log entries with consistent formatting. Metrics MUST be collected to monitor system health and performance. Error conditions MUST be properly tracked and reported.
+
+### VI. Layered Architecture
+The system MUST follow a layered architecture with clear separation of concerns:
+- Repository Layer: Data access and persistence logic
 - Service Layer: Business logic and domain operations
-- Controller Layer: Transport-related transformations and user interface coordination
-Each layer MUST be independently testable. Cross-layer dependencies MUST be minimized through well-defined interfaces.
+- Controller Layer: Transport layer and UI components
+Each layer MUST be independently testable and loosely coupled with other layers.
 
-## Additional Constraints
+## Architecture Requirements
 
-All implementations MUST comply with industry-standard security practices. Third-party dependencies MUST be regularly updated and security-audited. Performance benchmarks MUST be established for critical operations and monitored continuously.
+The system MUST follow a layered architecture pattern with clear separation of concerns. Each layer MUST be independently deployable and testable:
 
-## Development Workflow
+1. **Repository Layer**: Handles data access and persistence operations
+   - Encapsulates data storage mechanisms
+   - Provides a clean API for data operations
+   - Isolates data concerns from business logic
 
-Code reviews are mandatory for all changes. Feature branches MUST be used for all development work. Continuous integration MUST validate all tests pass before merging. Documentation MUST be updated alongside code changes. Release tags MUST follow semantic versioning.
+2. **Service Layer**: Contains business logic and domain operations
+   - Implements core application functionality
+   - Coordinates between different repositories
+   - Enforces business rules and validation
+
+3. **Controller Layer**: Manages transport layer and user interface
+   - Handles HTTP requests and responses
+   - Converts between external and internal data formats
+   - Manages user interactions and presentation
+
+Each layer MUST be independently testable through unit tests, and integration between layers MUST be verified through integration tests.
+
+## Security Standards
+
+All development MUST adhere to security best practices:
+
+1. **Authentication and Authorization**
+   - All API endpoints MUST require authentication unless explicitly public
+   - Role-based access control MUST be implemented
+   - Permissions MUST be validated for all operations
+
+2. **Data Protection**
+   - Sensitive data MUST be encrypted at rest and in transit
+   - Personal information MUST be handled according to privacy regulations
+   - Data retention and deletion policies MUST be enforced
+
+3. **Secure Coding Practices**
+   - Input validation MUST be performed on all external data
+   - SQL injection and other common vulnerabilities MUST be prevented
+   - Dependencies MUST be regularly updated and security-audited
 
 ## Governance
 
-This Constitution supersedes all other development practices and guidelines. Any amendments MUST be documented with a clear rationale and implementation plan. All team members MUST acknowledge and adhere to these principles. Compliance with these principles MUST be verified during code reviews.
+The Constitution supersedes all other development practices and guidelines. Any amendments to this Constitution MUST follow a formal process including documentation, approval, and implementation plan.
 
-Versioning Policy:
-- MAJOR: Backward incompatible principle changes or removals
-- MINOR: New principle additions or materially expanded guidance
-- PATCH: Clarifications, wording improvements, non-semantic refinements
+All pull requests and code reviews MUST verify compliance with these constitutional principles. Significant violations MUST be addressed before merging.
 
-Amendment Procedure:
-1. Propose changes with rationale and impact assessment
-2. Team review and consensus building
-3. Update Constitution and all dependent artifacts
-4. Communicate changes to all stakeholders
+Versioning of this Constitution follows semantic versioning:
+- MAJOR version for backward-incompatible governance changes
+- MINOR version for new principles or materially expanded guidance
+- PATCH version for clarifications and non-semantic refinements
 
-**Version**: 1.1.0 | **Ratified**: 2025-09-20 | **Last Amended**: 2025-09-20
+**Version**: 1.1.0 | **Ratified**: 2025-09-21 | **Last Amended**: 2025-09-21

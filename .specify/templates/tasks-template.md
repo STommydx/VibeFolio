@@ -58,32 +58,29 @@
 - [ ] T008 [P] User model in src/models/user.py
 - [ ] T009 [P] UserService CRUD in src/services/user_service.py
 - [ ] T010 [P] CLI --create-user in src/cli/user_commands.py
-- [ ] T011 POST /api/users endpoint in src/controllers/user_controller.py
-- [ ] T012 GET /api/users/{id} endpoint in src/controllers/user_controller.py
+- [ ] T011 POST /api/users endpoint
+- [ ] T012 GET /api/users/{id} endpoint
 - [ ] T013 Input validation
 - [ ] T014 Error handling and logging
 
 ## Phase 3.4: Integration
 - [ ] T015 Connect UserService to DB
-- [ ] T016 Auth middleware implementation
-- [ ] T017 Request/response logging with structured format
+- [ ] T016 Auth middleware
+- [ ] T017 Request/response logging
 - [ ] T018 CORS and security headers
-- [ ] T019 Metrics collection for key operations
 
 ## Phase 3.5: Polish
-- [ ] T020 [P] Unit tests for validation in tests/unit/test_validation.py
-- [ ] T021 Performance tests (<200ms)
-- [ ] T022 Security audit of access controls
-- [ ] T023 Observability validation (logs, metrics)
-- [ ] T024 [P] Update docs/api.md
-- [ ] T025 Remove duplication
-- [ ] T026 Run manual-testing.md
+- [ ] T019 [P] Unit tests for validation in tests/unit/test_validation.py
+- [ ] T020 Performance tests (<200ms)
+- [ ] T021 [P] Update docs/api.md
+- [ ] T022 Remove duplication
+- [ ] T023 Run manual-testing.md
 
 ## Dependencies
 - Tests (T004-T007) before implementation (T008-T014)
 - T008 blocks T009, T015
 - T016 blocks T018
-- Implementation before polish (T020-T026)
+- Implementation before polish (T019-T023)
 
 ## Parallel Example
 ```
@@ -105,7 +102,7 @@ Task: "Integration test auth in tests/integration/test_auth.py"
 
 1. **From Contracts**:
    - Each contract file → contract test task [P]
-   - Each endpoint → controller implementation task
+   - Each endpoint → implementation task
    
 2. **From Data Model**:
    - Each entity → model creation task [P]
@@ -115,23 +112,9 @@ Task: "Integration test auth in tests/integration/test_auth.py"
    - Each story → integration test [P]
    - Quickstart scenarios → validation tasks
 
-4. **Layered Architecture Compliance**:
-   - Repository tasks for data persistence
-   - Service tasks for business logic
-   - Controller tasks for API endpoints
-   
-5. **Security Requirements**:
-   - Auth middleware tasks for access control
-   - Encryption tasks for data transmission
-   
-6. **Observability Requirements**:
-   - Logging tasks for structured telemetry
-   - Metrics tasks for performance tracking
-
-7. **Ordering**:
-   - Setup → Tests → Models → Services → Controllers → Integration → Polish
+4. **Ordering**:
+   - Setup → Tests → Models → Services → Endpoints → Polish
    - Dependencies block parallel execution
-   - Tests before implementation (TDD)
 
 ## Validation Checklist
 *GATE: Checked by main() before returning*
@@ -142,7 +125,3 @@ Task: "Integration test auth in tests/integration/test_auth.py"
 - [ ] Parallel tasks truly independent
 - [ ] Each task specifies exact file path
 - [ ] No task modifies same file as another [P] task
-- [ ] API endpoints implemented before UI components
-- [ ] Security controls implemented for all sensitive operations
-- [ ] Structured logging implemented for all key operations
-- [ ] Implementation follows repository → service → controller pattern
